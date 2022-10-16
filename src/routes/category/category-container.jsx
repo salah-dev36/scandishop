@@ -8,10 +8,19 @@ import Spinner from "../../components/spinner/spinner-comp";
 
 export class CategoryContainer extends Component {
   render() {
+    const { category } = this.props.match.params;
+
     return (
-      <Query query={GET_PRODUCTS_ID_BY_CATEGORY} variables={{ title: "all" }}>
+      <Query
+        query={GET_PRODUCTS_ID_BY_CATEGORY}
+        variables={{ title: category }}
+      >
         {({ data, loading }) =>
-          loading? <Spinner />: <Category products={data.category.products} />
+          loading ? (
+            <Spinner />
+          ) : (
+            <Category products={data.category.products} category={category} />
+          )
         }
       </Query>
     );

@@ -6,10 +6,10 @@ import { Container, Title, ProductsList } from "./category-styles";
 
 export class Category extends Component {
   render() {
-    const { products } = this.props;
+    const { products, category } = this.props;
     return (
       <Container>
-        <Title>category name</Title>
+        <Title>{category}</Title>
         <ProductsList>
           {products.map(({ id }) => (
             <ProductCard id={id} key={id} />

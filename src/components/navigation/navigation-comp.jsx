@@ -8,7 +8,9 @@ export class Navigation extends Component {
     return (
       <Container>
         {categories.map(({ name }) => (
-          <NavigationLink key={name}>{name}</NavigationLink>
+          <NavigationLink to={`/${name}`} key={name} activeClassName="any">
+            {name}
+          </NavigationLink>
         ))}
       </Container>
     );

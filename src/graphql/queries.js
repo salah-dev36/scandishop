@@ -32,5 +32,28 @@ export const GET_PRODUCT_BY_ID = gql`
         }
       }
     }
+    selectedCurrency @client
+  }
+`;
+
+export const GET_SELECTED_CURRENCY_AND_IS_SWITCHER_OPEN = gql`
+  query {
+    selectedCurrency @client
+    isCurrencySwitcherOpen @client
+  }
+`;
+
+export const GET_IS_CURRENCY_SWITCHER_OPEN = gql`
+  query {
+    isCurrencySwitcherOpen @client
+  }
+`;
+
+export const GET_CURRENCIES = gql`
+  query {
+    currencies {
+      label
+      symbol
+    }
   }
 `;

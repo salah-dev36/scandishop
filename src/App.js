@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Header from "./routes/header/header-comp";
+import {default as Header} from "./routes/header/header-container";
 import { default as Category } from "./routes/category/category-container";
 
 export class App extends Component {

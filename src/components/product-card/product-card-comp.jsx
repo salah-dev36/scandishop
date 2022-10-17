@@ -41,12 +41,22 @@ export class ProductCard extends Component {
     }
   };
 
+  renderPrice = () => {
+    const { selectedCurrency, product: { prices }} = this.props;
+
+    const { amount, currency: { symbol } } = prices.find(
+      ({ currency }) => currency.symbol === selectedCurrency
+    );
+
+    return (
+      <Price>
+        {symbol} {amount}
+      </Price>
+    );
+  };
+
   render() {
-    const { gallery, name, brand, prices, inStock } = this.props.product;
-    const {
-      amount,
-      currency: { symbol },
-    } = prices[0];
+    const { gallery, name, brand, inStock } = this.props.product;
 
     return (
       <Container
@@ -54,7 +64,6 @@ export class ProductCard extends Component {
         onMouseOut={this.onHoverOutHandle}
         inStock={inStock}
       >
-        {" "}
         {this.renderOutOfStock()}
         {this.renderAddToCart()}
         <ProductImage url={gallery[0]} />
@@ -62,10 +71,7 @@ export class ProductCard extends Component {
           <Name>
             {brand} {name}
           </Name>
-          <Price>
-            {symbol}
-            {amount}
-          </Price>
+          {this.renderPrice()}
         </ProductInfo>
       </Container>
     );

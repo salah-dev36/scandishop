@@ -1,12 +1,22 @@
 import React, { Component } from "react";
+import { Redirect, withRouter } from "react-router-dom";
 
 import { Container, NavigationLink } from "./navigation-styles";
 
 export class Navigation extends Component {
+  redirectToALL = () => {
+    const { categories, location: { pathname }} = this.props;
+
+    if (pathname === "/") {
+      return <Redirect to={categories[0].name} />;
+    }
+  };
+
   render() {
     const { categories } = this.props;
     return (
       <Container>
+        {this.redirectToALL()}
         {categories.map(({ name }) => (
           <NavigationLink to={`/${name}`} key={name} activeClassName="any">
             {name}
@@ -17,4 +27,4 @@ export class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default withRouter(Navigation);

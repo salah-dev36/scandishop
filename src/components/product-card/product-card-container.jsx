@@ -10,9 +10,7 @@ export class ProductCardContainer extends Component {
     const { id } = this.props;
     return (
       <Query query={GET_PRODUCT_BY_ID} variables={{ id: id }}>
-        {({ data, loading }) =>
-          !loading && <ProductCard product={data.product} />
-        }
+        {({ data, loading }) => !loading && <ProductCard {...data} />}
       </Query>
     );
   }

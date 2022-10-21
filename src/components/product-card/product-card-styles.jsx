@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   width: 354px;
   height: 412px;
   padding: 16px;
   position: relative;
   font-size: 18px;
-  opacity: ${(props) => !props.inStock && "0.5"};
+  opacity: ${(props) => props.instock === "false" && "0.5"};
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
@@ -31,13 +32,14 @@ export const ProductInfo = styled.div`
   line-height: 1.7;
 `;
 
-export const Name = styled.div``;
+export const Name = styled.span``;
 
-export const Price = styled.div`
+export const Price = styled.span`
+  display: block;
   font-weight: 600;
 `;
 
-export const OutOfStock = styled.div`
+export const OutOfStock = styled.span`
   position: absolute;
   opacity: 0.8;
   font-size: 24px;

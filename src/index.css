@@ -1,7 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Raleway',
-    sans-serif;
+  font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0 100px;
@@ -14,4 +13,6 @@ code {
 
 *{
   color: #1D1F22;
+  text-decoration: none;
+  box-sizing: border-box;
 }

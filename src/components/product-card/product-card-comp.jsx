@@ -12,6 +12,8 @@ import {
 
 import GreenCartImg from "../../assets/add-to-cart-img.png";
 
+import { extractPrice } from "../../utils/product-utils";
+
 export class ProductCard extends Component {
   constructor() {
     super();
@@ -42,12 +44,15 @@ export class ProductCard extends Component {
   };
 
   renderPrice = () => {
-    const { selectedCurrency, product: { prices }} = this.props;
+    const {
+      selectedCurrency,
+      product: { prices },
+    } = this.props;
 
-    const { amount, currency: { symbol } } = prices.find(
-      ({ currency }) => currency.symbol === selectedCurrency
-    );
-
+    const {
+      amount,
+      currency: { symbol },
+    } = extractPrice(prices, selectedCurrency);
     return (
       <Price>
         {symbol} {amount}
@@ -56,13 +61,14 @@ export class ProductCard extends Component {
   };
 
   render() {
-    const { gallery, name, brand, inStock } = this.props.product;
+    const { gallery, name, brand, inStock, category, id } = this.props.product;
 
     return (
       <Container
         onMouseOver={this.onHoverHandle}
         onMouseOut={this.onHoverOutHandle}
-        inStock={inStock}
+        instock={`${inStock}`}
+        to={`/${category}/${id}`}
       >
         {this.renderOutOfStock()}
         {this.renderAddToCart()}

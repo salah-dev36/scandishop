@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-export const Container = styled(Link)`
-  width: 354px;
-  height: 412px;
+export const Container = styled.div`
+  width: 386px;
+  height: 444px;
   padding: 16px;
   position: relative;
   font-size: 18px;
@@ -18,8 +17,8 @@ export const Container = styled(Link)`
 `;
 
 export const ProductImage = styled.div`
-  width: 100%;
   height: 330px;
+  width: 354px;
   background-image: url(${(props) => props.url});
   background-position: center;
   background-size: contain;
@@ -44,8 +43,8 @@ export const OutOfStock = styled.span`
   opacity: 0.8;
   font-size: 24px;
   z-index: 2;
-  left: 103px;
-  top: 167px;
+  left: 106px;
+  top: 158px;
 `;
 
 export const AddToCartImg = styled.img`

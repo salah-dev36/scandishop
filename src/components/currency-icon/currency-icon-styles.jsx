@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const Container = styled.span`
+export const Container = styled.div`
   font-size: 18px;
-  font-weight: 500;
-  width: 26px;
+  font-weight: 600;
+  min-width: 21px;
   cursor: pointer;
+  user-select: none;
 `;

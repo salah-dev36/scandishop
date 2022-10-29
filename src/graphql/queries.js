@@ -27,6 +27,16 @@ export const GET_PRODUCT_BY_ID_FOR_CARD = gql`
       inStock
       category
       id
+      attributes {
+        id
+        name
+        type
+        items {
+          displayValue
+          value
+          id
+        }
+      }
       prices {
         amount
         currency {
@@ -87,5 +97,38 @@ export const GET_CURRENCIES = gql`
       label
       symbol
     }
+  }
+`;
+
+export const GET_IS_CART_OPEN = gql`
+  query {
+    isCartOpen @client
+  }
+`;
+
+export const GET_IS_CART_AND_CURRENCY_OPEN = gql`
+  query {
+    isCurrencySwitcherOpen @client
+    isCartOpen @client
+  }
+`;
+
+export const GET_CART_ITEMS = gql`
+  query {
+    cartItems @client
+  }
+`;
+
+export const GET_CART_INFO = gql`
+  query {
+    cartItems @client
+    selectedCurrency @client
+    itemsCount @client
+  }
+`;
+
+export const GET_ITEMS_COUNT = gql`
+  query {
+    itemsCount @client
   }
 `;

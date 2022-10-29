@@ -1,7 +1,11 @@
 import {
   GET_IS_CURRENCY_SWITCHER_OPEN,
   GET_SELECTED_CURRENCY_AND_IS_SWITCHER_OPEN,
+  GET_IS_CART_OPEN,
+  GET_CART_ITEMS,
 } from "./queries";
+
+import { addItemToCart, removeItemFromCart } from "../utils/cart-utils";
 
 export const resolvers = {
   Mutation: {
@@ -22,6 +26,51 @@ export const resolvers = {
         data: {
           selectedCurrency: newCurrency,
           isCurrencySwitcherOpen: false,
+        },
+      });
+    },
+
+    toggleCart: (_root, _args, { cache }) => {
+      const { isCartOpen } = cache.readQuery({
+        query: GET_IS_CART_OPEN,
+      });
+
+      cache.writeQuery({
+        query: GET_IS_CART_OPEN,
+        data: { isCartOpen: !isCartOpen },
+      });
+    },
+
+    addToCart: (_root, { productToAdd, selectedAttributes }, { cache }) => {
+      const { cartItems } = cache.readQuery({
+        query: GET_CART_ITEMS,
+      });
+
+      const newCartItems = addItemToCart(
+        cartItems,
+        productToAdd,
+        selectedAttributes
+      );
+
+      cache.writeQuery({
+        query: GET_CART_ITEMS,
+        data: {
+          cartItems: newCartItems,
+        },
+      });
+    },
+
+    removeFromCart: (_root, { productToRemove }, { cache }) => {
+      const { cartItems } = cache.readQuery({
+        query: GET_CART_ITEMS,
+      });
+
+      const newCartItems = removeItemFromCart(cartItems, productToRemove);
+
+      cache.writeQuery({
+        query: GET_CART_ITEMS,
+        data: {
+          cartItems: newCartItems,
         },
       });
     },

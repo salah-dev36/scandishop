@@ -13,6 +13,7 @@ import {
 import GreenCartImg from "../../assets/add-to-cart-img.png";
 
 import { extractPrice } from "../../utils/product-utils";
+import { Link } from "react-router-dom";
 
 export class ProductCard extends Component {
   constructor() {
@@ -27,11 +28,14 @@ export class ProductCard extends Component {
   onHoverOutHandle = () => this.setState({ hover: false });
 
   renderAddToCart = () => {
-    const { inStock } = this.props.product;
+    const {
+      addToCart,
+      product: { inStock },
+    } = this.props;
     const { hover } = this.state;
 
-    if (inStock & hover) {
-      return <AddToCartImg src={GreenCartImg} />;
+    if (inStock && hover) {
+      return <AddToCartImg onClick={addToCart} src={GreenCartImg} />;
     }
   };
 
@@ -53,11 +57,7 @@ export class ProductCard extends Component {
       amount,
       currency: { symbol },
     } = extractPrice(prices, selectedCurrency);
-    return (
-      <Price>
-        {symbol} {amount}
-      </Price>
-    );
+    return <Price>{`${symbol} ${Math.floor(amount).toFixed(2)}`}</Price>;
   };
 
   render() {
@@ -68,17 +68,18 @@ export class ProductCard extends Component {
         onMouseOver={this.onHoverHandle}
         onMouseOut={this.onHoverOutHandle}
         instock={`${inStock}`}
-        to={`/${category}/${id}`}
       >
-        {this.renderOutOfStock()}
+        <Link to={`/${category}/${id}`}>
+          {this.renderOutOfStock()}
+          <ProductImage url={gallery[0]} />
+          <ProductInfo>
+            <Name>
+              {brand} {name}
+            </Name>
+            {this.renderPrice()}
+          </ProductInfo>
+        </Link>
         {this.renderAddToCart()}
-        <ProductImage url={gallery[0]} />
-        <ProductInfo>
-          <Name>
-            {brand} {name}
-          </Name>
-          {this.renderPrice()}
-        </ProductInfo>
       </Container>
     );
   }

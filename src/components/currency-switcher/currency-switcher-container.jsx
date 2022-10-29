@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Query, Mutation } from "@apollo/client/react/components";
 
 import { GET_CURRENCIES } from "../../graphql/queries";
-import { SELECT_CURRENCY } from "../../graphql/mutations";
+import { SELECT_CURRENCY, TOGGLE_CURRENCY } from "../../graphql/mutations";
 
 import CurrencySwitcher from "./currency-switcher-comp";
 
@@ -14,12 +14,17 @@ export class CurrencySwitcherContainer extends Component {
           !loading && (
             <Mutation mutation={SELECT_CURRENCY}>
               {(selectCurrency) => (
-                <CurrencySwitcher
-                  selectCurrency={(newCurrency) =>
-                    selectCurrency({ variables: { newCurrency } })
-                  }
-                  {...data}
-                />
+                <Mutation mutation={TOGGLE_CURRENCY}>
+                  {(toggleCurrency) => (
+                    <CurrencySwitcher
+                      toggleCurrency={toggleCurrency}
+                      selectCurrency={(newCurrency) =>
+                        selectCurrency({ variables: { newCurrency } })
+                      }
+                      {...data}
+                    />
+                  )}
+                </Mutation>
               )}
             </Mutation>
           )

@@ -11,14 +11,13 @@ import {
   ProductInfo,
   Price,
   Description,
-  AttributeGroupe,
-  AttributeName,
-  Attribute,
+  PriceTitle,
 } from "./product-page-styles";
 
 import Button from "../../components/button/button-comp";
 
 import { extractPrice, selectAttributesFunc } from "../../utils/product-utils";
+import Attributes from "../../components/attributes/attributes-comp";
 
 export class ProductPage extends Component {
   constructor(props) {
@@ -67,38 +66,6 @@ export class ProductPage extends Component {
     }
   };
 
-  renderAttributes = () => {
-    const { productAttributes } = this.state;
-
-    return productAttributes.map(({ name, id, items, type }) => (
-      <div key={id}>
-        <AttributeName>{name}:</AttributeName>
-        {this.renderAttributeGroupe(items, type, name)}
-      </div>
-    ));
-  };
-
-  renderAttributeGroupe = (attribute, attributeType, attributeName) => {
-    return (
-      <AttributeGroupe>
-        {attribute.map(({ id, value, displayValue, selected }) => {
-          return (
-            <Attribute
-              type={attributeType}
-              selected={selected}
-              title={displayValue}
-              key={id}
-              color={value}
-              onClick={() => this.selectAttribute(value, attributeName)}
-            >
-              {attributeType === "text" ? value : ""}
-            </Attribute>
-          );
-        })}
-      </AttributeGroupe>
-    );
-  };
-
   renderPrice = () => {
     const {
       selectedCurrency,
@@ -109,10 +76,8 @@ export class ProductPage extends Component {
 
     return (
       <div>
-        <AttributeName>price:</AttributeName>
-        <Price>
-          {currency.symbol} {amount}
-        </Price>
+        <PriceTitle>price:</PriceTitle>
+        <Price>{`${currency.symbol} ${Math.floor(amount).toFixed(2)}`}</Price>
       </div>
     );
   };
@@ -125,7 +90,8 @@ export class ProductPage extends Component {
   };
 
   render() {
-    const { brand, name } = this.props.product;
+    const { product, addToCart } = this.props;
+    const { brand, name, inStock } = product;
 
     return (
       <Container>
@@ -134,9 +100,18 @@ export class ProductPage extends Component {
         <ProductInfo>
           <Brand>{brand}</Brand>
           <Name>{name}</Name>
-          {this.renderAttributes()}
+          <Attributes
+            big="true"
+            attributes={this.state.productAttributes}
+            selectAttribute={this.selectAttribute}
+          />
           {this.renderPrice()}
-          <Button children="ADD TO CART" />
+          <Button
+            inStock={inStock}
+            addToCart={() => addToCart(product, this.state.productAttributes)}
+            feature="add-to-cart"
+            children="add to cart"
+          />
           {this.renderDescription()}
         </ProductInfo>
       </Container>

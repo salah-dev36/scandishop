@@ -5,13 +5,17 @@ export const Container = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  position:relative;
+  position: sticky;
+  background-color: white;
+  top: 0;
+  z-index: 3;
 `;
 
 export const Features = styled.div`
   height: 80px;
   width: 245px;
-  display:flex;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
-`
+  gap: 22px;
+`;

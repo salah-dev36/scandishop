@@ -59,13 +59,9 @@ export const Price = styled.span`
   margin: 8px 0;
 `;
 
-export const AttributeGroupe = styled.div`
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-`;
 
-export const AttributeName = styled.h3`
+
+export const PriceTitle = styled.h3`
   font-size: 18px;
   font-weight: 700;
   margin-top: 0;
@@ -73,32 +69,6 @@ export const AttributeName = styled.h3`
   text-transform: uppercase;
 `;
 
-export const Attribute = styled.button`
-  width: ${({ type }) => (type === "text" ? "64px" : "32px")};
-  height: ${({ type }) => (type === "text" ? "45px" : "32px")};
 
-  border ${({ type, color, selected }) =>
-    type === "text"
-      ? "1px solid black"
-      : selected
-      ? "1px solid white"
-      : color === "#FFFFFF"
-      ? "1px solid gray"
-      : "none"};
-
-  color: ${({ type, selected }) =>
-    (type === "text") & selected ? "white" : "black"};
-
-  outline: ${({ type, selected }) =>
-    (type === "swatch") & selected && "1px solid #5ece7b"};
-
-  background-color:${({ type, color, selected }) =>
-    type === "swatch" ? color : selected ? "black" : "white"};
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-`;
 
 export const Description = styled.div``;

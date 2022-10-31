@@ -16,13 +16,17 @@ export const Container = styled.div`
   }
 `;
 
-export const ProductImage = styled.div`
+export const ProductImageContainer = styled.div`
   height: 330px;
   width: 354px;
-  background-image: url(${(props) => props.url});
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+`;
+
+export const ProductImage = styled.img`
+  width: 85%;
 `;
 
 export const ProductInfo = styled.div`

@@ -52,9 +52,14 @@ export const removeItemFromCart = (cartItems, productToRemove) => {
 };
 
 export const calculCartTotal = (cartItems, selectedCurrency) => {
-  return cartItems.reduce((cartTotal, item) => {
+  const total = cartItems.reduce((cartTotal, item) => {
     const { amount } = extractPrice(item.prices, selectedCurrency);
 
-    return cartTotal + Math.floor(amount) * item.quantity;
+    return cartTotal + amount * item.quantity
   }, 0);
+  return total.toFixed(2)
 };
+
+export const calculTax = (total) => {
+  return (total * 0.21).toFixed(2)
+}

@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { default as Header } from "./routes/header/header-container";
 import { default as Category } from "./routes/category/category-container";
 import { default as ProductPage } from "./routes/product-page/product-page-container";
+import {default as Cart} from "./routes/cart/cart-container";
 
 export class App extends Component {
   render() {
@@ -11,6 +12,7 @@ export class App extends Component {
       <>
         <Header />
         <Switch>
+          <Route exact path="/cart" component={Cart}  />
           <Route
             exact
             path="/:category"

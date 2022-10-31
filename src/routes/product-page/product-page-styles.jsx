@@ -40,7 +40,10 @@ export const ProductInfo = styled.div`
   width: 300px;
   display: flex;
   flex-direction: column;
+  gap: 24px;
 `;
+
+export const Title = styled.div``;
 
 export const Brand = styled.h1`
   font-size: 30px;
@@ -56,19 +59,14 @@ export const Name = styled.h2`
 export const Price = styled.span`
   font-size: 24px;
   font-weight: 700;
-  margin: 8px 0;
 `;
 
-
-
-export const PriceTitle = styled.h3`
+export const PriceTitle = styled.span`
   font-size: 18px;
   font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 8px;
   text-transform: uppercase;
+  display: block;
+  margin-top: 12px;
 `;
-
-
 
 export const Description = styled.div``;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { AddToCartBtn, CheckOutBtn, ViewBagBtn } from "./button-styles";
+import { AddToCartBtn, CheckOutBtn, OrderBtn, ViewBagBtn } from "./button-styles";
 
 export class Button extends Component {
   render() {
@@ -14,9 +14,9 @@ export class Button extends Component {
           </AddToCartBtn>
         ) : feature === "go-to-checkout" ? (
           <CheckOutBtn>{children}</CheckOutBtn>
-        ) : (
-          feature === "go-to-bag" && <ViewBagBtn>{children} </ViewBagBtn>
-        )}
+        ) : 
+          feature === "go-to-bag" ? <ViewBagBtn>{children} </ViewBagBtn> : feature === "order" && <OrderBtn>{children}</OrderBtn>
+        }
       </>
     );
   }

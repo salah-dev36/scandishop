@@ -20,7 +20,7 @@ export const AddToCartBtn = styled(CheckOutBtn)`
   height: 52px;
   min-height: 52px;
   letter-spacing: 0.5px;
-  margin: 24px 0;
+  margin: 12px 0;
   background-color: ${(props) => props.disabled && "#4ba663"};
   cursor: ${(props) => props.disabled && "not-allowed"};
 `;
@@ -34,4 +34,9 @@ export const ViewBagBtn = styled(CheckOutBtn)`
     background-color: black;
     color: white;
   }
+`;
+
+export const OrderBtn = styled(CheckOutBtn)`
+  width: 279px;
+  height: 43px;
 `;

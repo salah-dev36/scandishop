@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 import {
   Container,
@@ -7,14 +8,16 @@ import {
   Total,
   ButtonsContainer,
   CartEmpty,
+  Title,
 } from "./mini-cart-styles";
 
-import { default as MiniCartItem } from "../mini-cart-item/mini-cart-item-container";
+import { default as CartItem } from "../cart-item/cart-item-container";
 import Button from "../button/button-comp";
 
 import { calculCartTotal } from "../../utils/cart-utils";
 
 export class MiniCart extends Component {
+  
   renderCartItems = () => {
     const { cartItems, selectedCurrency } = this.props;
 
@@ -24,7 +27,7 @@ export class MiniCart extends Component {
       return (
         <ItemsContainer>
           {cartItems.map((cartItem) => (
-            <MiniCartItem
+            <CartItem
               selectedCurrency={selectedCurrency}
               key={uuidv4()}
               product={cartItem}
@@ -37,14 +40,12 @@ export class MiniCart extends Component {
 
   renderCartTotal = () => {
     const { cartItems, selectedCurrency } = this.props;
+    const cartTotal = calculCartTotal(cartItems, selectedCurrency);
 
     return (
       <Total>
-        total
-        <span>{`${selectedCurrency}${calculCartTotal(
-          cartItems,
-          selectedCurrency
-        ).toFixed(2)}`}</span>
+        <span>total</span>
+        <span>{`${selectedCurrency}${cartTotal}`}</span>
       </Total>
     );
   };
@@ -54,13 +55,15 @@ export class MiniCart extends Component {
 
     return (
       <Container>
-        <div>
-          <b>My Bag,</b> {itemsCount} items
-        </div>
+        <Title>
+          <span>My Bag,</span> {itemsCount} items
+        </Title>
         {this.renderCartItems()}
         {this.renderCartTotal()}
         <ButtonsContainer>
-          <Button feature="go-to-bag" children="view bag" />
+          <Link to="/cart">
+            <Button feature="go-to-bag" children="view bag" />
+          </Link>
           <Button feature="go-to-checkout" children="check out" />
         </ButtonsContainer>
       </Container>

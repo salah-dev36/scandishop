@@ -1,7 +1,9 @@
 export const extractPrice = (pricesArray, selectedCurrency) => {
-  return pricesArray.find(
+  const price = pricesArray.find(
     ({ currency }) => currency.symbol === selectedCurrency
   );
+
+  return {...price, amount: Math.floor(price.amount).toFixed(2)}
 };
 
 export const selectAttributesFunc = (

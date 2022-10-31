@@ -57,6 +57,7 @@ export const GET_PRODUCT_BY_ID_FOR_PAGE = gql`
       inStock
       description
       id
+      category
       attributes {
         id
         name

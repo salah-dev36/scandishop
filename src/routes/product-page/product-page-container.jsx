@@ -21,7 +21,9 @@ export class ProductPageContainer extends Component {
                 <ProductPage
                   {...data}
                   addToCart={(productToAdd, selectedAttributes) =>
-                    addToCart({ variables: {productToAdd, selectedAttributes} })
+                    addToCart({
+                      variables: { productToAdd, selectedAttributes },
+                    })
                   }
                 />
               )}

@@ -12,6 +12,7 @@ import {
   Price,
   Description,
   PriceTitle,
+  Title,
 } from "./product-page-styles";
 
 import Button from "../../components/button/button-comp";
@@ -23,16 +24,18 @@ export class ProductPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainImage: this.props.product.gallery[0],
+      mainImage: "",
       productAttributes: [],
     };
   }
 
   componentDidMount() {
-    const { attributes } = this.props.product;
+    const { attributes, gallery } = this.props.product;
     this.setState({
+      mainImage: gallery[0],
       productAttributes: attributes,
     });
+    window.scrollTo(0, 0);
   }
 
   selectAttribute = (newAttributeValue, newAttributename) => {
@@ -75,10 +78,10 @@ export class ProductPage extends Component {
     const { amount, currency } = extractPrice(prices, selectedCurrency);
 
     return (
-      <div>
+      <>
         <PriceTitle>price:</PriceTitle>
-        <Price>{`${currency.symbol} ${Math.floor(amount).toFixed(2)}`}</Price>
-      </div>
+        <Price>{`${currency.symbol} ${amount}`}</Price>
+      </>
     );
   };
 
@@ -92,18 +95,20 @@ export class ProductPage extends Component {
   render() {
     const { product, addToCart } = this.props;
     const { brand, name, inStock } = product;
-
     return (
       <Container>
         {this.renderCarrousel()}
         <MainImage url={this.state.mainImage} />
         <ProductInfo>
-          <Brand>{brand}</Brand>
-          <Name>{name}</Name>
+          <Title>
+            <Brand>{brand}</Brand>
+            <Name>{name}</Name>
+          </Title>
           <Attributes
             big="true"
             attributes={this.state.productAttributes}
             selectAttribute={this.selectAttribute}
+            selectable="true"
           />
           {this.renderPrice()}
           <Button

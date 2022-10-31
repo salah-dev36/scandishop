@@ -5,15 +5,16 @@ import {
   AttributeName,
   Attribute,
   MiniAttribute,
+  Container,
 } from "./attributes-styles";
 
 export class Attributes extends Component {
   render() {
-    const { attributes, selectAttribute, big } = this.props;
+    const { attributes, selectAttribute, big, selectable } = this.props;
     return (
       <>
         {attributes.map(({ id, name, items, type }) => (
-          <div key={id}>
+          <Container key={id}>
             <AttributeName big={big}>{name}:</AttributeName>
             <AttributeGroupe big={big}>
               {items.map(({ selected, id, displayValue, value }) =>
@@ -25,6 +26,7 @@ export class Attributes extends Component {
                     key={id}
                     value={value}
                     onClick={() => selectAttribute(value, name)}
+                    selectable={selectable}
                   >
                     {type === "text" ? value : ""}
                   </Attribute>
@@ -41,7 +43,7 @@ export class Attributes extends Component {
                 )
               )}
             </AttributeGroupe>
-          </div>
+          </Container>
         ))}
       </>
     );

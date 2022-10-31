@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 325px;
   height: 677px;
   background-color: white;
-  padding: 32px 16px;
+  padding: 32px 12px 32px 16px;
   position: absolute;
   right: -28px;
   top: 78px;
@@ -14,16 +14,26 @@ export const Container = styled.div`
   gap: 32px;
 `;
 
+export const Title = styled.div`
+  & > span {
+    font-weight: 700;
+  }
+`;
 export const ItemsContainer = styled.div`
   widht: 293px;
   height: 440px;
   display: flex;
+  padding-right: 1px;
   flex-direction: column;
   gap: 40px;
-  overflow: scroll;
+  overflow-y: scroll;
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e5e5e5;
+    border-radius: 25px;
   }
 `;
 

@@ -1,48 +1,52 @@
 import styled from "styled-components";
 
+export const Container = styled.div``;
+
 export const AttributeName = styled.span`
   display: block;
-
   ${({ big }) =>
     big
       ? `
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 8px;
   text-transform: uppercase;
   `
       : `
   font-size: 14px;
-  margin: 8px 0;
   `}
 `;
 
 export const AttributeGroupe = styled.div`
   display: flex;
+  padding: 1px;
+  margin-top:7px;
 
   ${({ big }) =>
     big
       ? `
       gap: 12px;
-      margin-bottom: 24px;
   `
       : `
       gap: 8px;
       user-select: none;
-      padding: 1px;
+      
   `}
 `;
 
 export const Attribute = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   ${({ type }) =>
     type === "text"
       ? `
-  width: 64px;
-  height: 45px;
+      width: 64px;
+      height: 45px;
   `
       : `
-  width: 32px;
-  height: 32px;
+      width: 32px;
+      height: 32px;
   `}
 
   border ${({ type, value, selected }) =>
@@ -63,16 +67,15 @@ export const Attribute = styled.button`
   background-color: ${({ type, value, selected }) =>
     type === "swatch" ? value : selected ? "black" : "white"};
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  cursor: ${({ selectable }) => (selectable ? "pointer" : "default")};
 `;
 
 export const MiniAttribute = styled(Attribute)`
-  width: ${({ type, value }) =>
-    type !== "text" ? "16px" : value.length > 2 ? "50px" : "24px"};
-  height: ${({ type }) => (type !== "text" ? "16px" : "24px")};
   font-size: 14px;
   cursor: default;
+
+  width: ${({ type, value }) =>
+    type !== "text" ? "16px" : value.length > 2 ? "50px" : "24px"};
+
+  height: ${({ type }) => (type !== "text" ? "16px" : "24px")};
 `;

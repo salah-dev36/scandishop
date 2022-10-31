@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Mutation } from "@apollo/client/react/components";
 
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../../graphql/mutations";
-import MiniCartItem from "./mini-cart-item-comp";
+import CartItem from "./cart-item-comp";
 
-export class MiniCartItemContainer extends Component {
+export class CartItemContainer extends Component {
   render() {
     const { product } = this.props;
     return (
@@ -21,7 +21,7 @@ export class MiniCartItemContainer extends Component {
             variables={{ productToRemove: product }}
           >
             {(removeFromCart) => (
-              <MiniCartItem
+              <CartItem
                 {...this.props}
                 decrease={removeFromCart}
                 increase={addToCart}
@@ -34,4 +34,4 @@ export class MiniCartItemContainer extends Component {
   }
 }
 
-export default MiniCartItemContainer;
+export default CartItemContainer;

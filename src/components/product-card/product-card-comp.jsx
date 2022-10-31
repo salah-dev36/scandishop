@@ -2,12 +2,13 @@ import React, { Component } from "react";
 
 import {
   Container,
-  ProductImage,
+  ProductImageContainer,
   ProductInfo,
   Name,
   Price,
   OutOfStock,
   AddToCartImg,
+  ProductImage,
 } from "./product-card-styles";
 
 import GreenCartImg from "../../assets/add-to-cart-img.png";
@@ -57,7 +58,7 @@ export class ProductCard extends Component {
       amount,
       currency: { symbol },
     } = extractPrice(prices, selectedCurrency);
-    return <Price>{`${symbol} ${Math.floor(amount).toFixed(2)}`}</Price>;
+    return <Price>{`${symbol} ${amount}`}</Price>;
   };
 
   render() {
@@ -71,7 +72,9 @@ export class ProductCard extends Component {
       >
         <Link to={`/${category}/${id}`}>
           {this.renderOutOfStock()}
-          <ProductImage url={gallery[0]} />
+          <ProductImageContainer>
+            <ProductImage src={gallery[0]} alt={id} />
+          </ProductImageContainer>
           <ProductInfo>
             <Name>
               {brand} {name}

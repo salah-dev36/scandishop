@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
 
   ${({ big }) =>
     big &&
@@ -22,15 +21,13 @@ export const ProductInfo = styled.div`
 `;
 
 export const Brand = styled.span`
+  font-weight: 300;
   ${({ big }) =>
-    big
-      ? `
+    big &&
+    `
       font-weight: 700; 
       font-size: 30px; 
-    `
-      : `
-      font-weight: 300;
-  `}
+    `}
 `;
 
 export const Name = styled(Brand)`
@@ -40,21 +37,14 @@ export const Name = styled(Brand)`
 export const Price = styled.span`
   display: block;
   font-weight: 600;
-
-  ${({ big }) =>
-    big
-      ? `
-    font-size: 24px; 
-  `
-      : `
-
-  `}
+  font-size: ${({ big }) => big && "24px"};
 `;
 
 export const ImageContainer = styled.div`
   width: 121px;
+  min-width: 121px;
   overflow: hidden;
-  margin-left: 8px;
+  margin-left: 7px;
   display: flex;
   align-items: center;
 `;
@@ -68,9 +58,8 @@ export const QuantityEdit = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1px;
-
-  ${({ big }) => big && "font-size:24px"}
+  padding: 1px;
+  font-size: ${({ big }) => big && "24px"};
 `;
 
 export const Square = styled.button`
@@ -79,6 +68,11 @@ export const Square = styled.button`
   padding: 0;
   cursor: pointer;
   user-select: none;
+
+  &:active {
+    background-color: black;
+    color: white;
+  }
 
   ${({ big }) =>
     big

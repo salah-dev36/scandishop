@@ -3,6 +3,7 @@ import {
   GET_SELECTED_CURRENCY_AND_IS_SWITCHER_OPEN,
   GET_IS_CART_OPEN,
   GET_CART_ITEMS,
+  GET_IS_CART_AND_CURRENCY_OPEN,
 } from "./queries";
 
 import { addItemToCart, removeItemFromCart } from "../utils/cart-utils";
@@ -15,8 +16,11 @@ export const resolvers = {
       });
 
       cache.writeQuery({
-        query: GET_IS_CURRENCY_SWITCHER_OPEN,
-        data: { isCurrencySwitcherOpen: !isCurrencySwitcherOpen },
+        query: GET_IS_CART_AND_CURRENCY_OPEN,
+        data: {
+          isCurrencySwitcherOpen: !isCurrencySwitcherOpen,
+          isCartOpen: false,
+        },
       });
     },
 
@@ -36,8 +40,8 @@ export const resolvers = {
       });
 
       cache.writeQuery({
-        query: GET_IS_CART_OPEN,
-        data: { isCartOpen: !isCartOpen },
+        query: GET_IS_CART_AND_CURRENCY_OPEN,
+        data: { isCurrencySwitcherOpen: false, isCartOpen: !isCartOpen },
       });
     },
 
@@ -74,5 +78,24 @@ export const resolvers = {
         },
       });
     },
+
+    closeCartAndCurrency: (_root, _args, { cache }) => {
+      cache.writeQuery({
+        query: GET_IS_CART_AND_CURRENCY_OPEN,
+        data: {
+          isCurrencySwitcherOpen: false,
+          isCartOpen: false,
+        },
+      });
+    },
+    closeCart: (_root, _args, { cache }) => {
+      cache.writeQuery({
+        query: GET_IS_CART_OPEN,
+        data: {
+          isCartOpen: false,
+        },
+      });
+    },
+    
   },
 };

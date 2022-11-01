@@ -13,9 +13,9 @@ export class Navigation extends Component {
   };
 
   render() {
-    const { categories } = this.props;
+    const { categories, closeCartAndCurrency } = this.props;
     return (
-      <Container>
+      <Container onClick={closeCartAndCurrency}>
         {this.redirectToALL()}
         {categories.map(({ name }) => (
           <NavigationLink to={`/${name}`} key={name} activeClassName="any">

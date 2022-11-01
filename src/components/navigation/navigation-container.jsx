@@ -12,7 +12,7 @@ export class NavigationContainer extends Component {
     return (
       <Query query={GET_CATEGORIES}>
         {({ data, loading }) =>
-          !loading && <Navigation categories={data.categories} />
+          !loading && <Navigation {...this.props} categories={data.categories} />
         }
       </Query>
     );

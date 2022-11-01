@@ -10,8 +10,9 @@ export const CheckOutBtn = styled.button`
   cursor: pointer;
   font-weight: 600;
 
-  &:hover {
+  &:active {
     background-color: #4ba663;
+    transform: scale(0.99);
   }
 `;
 

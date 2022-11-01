@@ -35,3 +35,15 @@ export const REMOVE_FROM_CART = gql`
     removeFromCart(productToRemove: $productToRemove) @client
   }
 `;
+
+export const CLOSE_CART_AND_CURRENCY = gql`
+  mutation CloseCartAndCurrency {
+    closeCartAndCurrency @client
+  }
+`
+export const CLOSE_CART = gql`
+  mutation CloseCart {
+    closeCart @client
+  }
+`
+

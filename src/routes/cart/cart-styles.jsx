@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 80px 0 200px 0;
+  padding: 0 100px;
 `;
 
 export const EmptyCart = styled.div`

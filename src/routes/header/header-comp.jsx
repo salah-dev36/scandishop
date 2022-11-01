@@ -6,21 +6,34 @@ import { default as CurrencySwitcher } from "../../components/currency-switcher/
 import { default as MiniCart } from "../../components/mini-cart/mini-cart-container";
 import { default as Navigation } from "../../components/navigation/navigation-container";
 
-import { Container, Features } from "./header-styles";
+import ShopLogo from "../../assets/shop-logo.png";
+
+import { Container, Features, Logo, Overlay } from "./header-styles";
 
 export class Header extends Component {
   render() {
-    const { isCurrencySwitcherOpen, isCartOpen } = this.props;
+    const { isCurrencySwitcherOpen, isCartOpen, closeCartAndCurrency } =
+      this.props;
 
     return (
-      <Container>
-        <Navigation />
+      <Container className="header">
+        <Navigation closeCartAndCurrency={() => closeCartAndCurrency()} />
+        <Logo src={ShopLogo}/>
         <Features>
           <CurrencyIcon />
           <CartIcon />
         </Features>
-        {isCurrencySwitcherOpen && <CurrencySwitcher />}
-        {isCartOpen && <MiniCart />}
+        {isCurrencySwitcherOpen && (
+          <>
+            <CurrencySwitcher /> <Overlay onClick={closeCartAndCurrency} />
+          </>
+        )}
+        {isCartOpen && (
+          <>
+            <MiniCart />
+            <Overlay feature="cart" onClick={closeCartAndCurrency} />
+          </>
+        )}
       </Container>
     );
   }

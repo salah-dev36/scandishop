@@ -19,7 +19,7 @@ export class CategoryContainer extends Component {
           loading ? (
             <Spinner />
           ) : (
-            <Category products={data.category.products} category={category} />
+            <Category products={data?.category.products} category={category} />
           )
         }
       </Query>

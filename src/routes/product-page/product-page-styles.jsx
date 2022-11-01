@@ -1,17 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 1230px;
-  margin-top: 150px;
-  height: 1000px;
+  margin: 150px 0;
   display: flex;
+  padding: 0 100px ;
 `;
 
 export const Carrousel = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 80px;
   margin-right: 40px;
 `;
 
@@ -27,6 +25,7 @@ export const CarrouselItem = styled.div`
 
 export const MainImage = styled.div`
   width: 610px;
+  min-width: 300px;
   height: 511px;
   background-image: url(${(props) => props.url});
   background-position: center;

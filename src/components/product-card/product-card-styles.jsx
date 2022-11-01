@@ -55,4 +55,8 @@ export const AddToCartImg = styled.img`
   position: absolute;
   right: 31px;
   bottom: 72px;
+
+  &:active {
+    transform: scale(0.97);
+  }
 `;

@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  border: 1px solid black;
   width: 325px;
   height: 677px;
   background-color: white;
   padding: 32px 12px 32px 16px;
   position: absolute;
-  right: -28px;
+  right: 72px;
   top: 78px;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  z-index: 4;
 `;
 
 export const Title = styled.div`

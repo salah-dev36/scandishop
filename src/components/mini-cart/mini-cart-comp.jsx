@@ -51,7 +51,7 @@ export class MiniCart extends Component {
   };
 
   render() {
-    const { itemsCount } = this.props;
+    const { itemsCount, closeCart } = this.props;
 
     return (
       <Container>
@@ -61,7 +61,7 @@ export class MiniCart extends Component {
         {this.renderCartItems()}
         {this.renderCartTotal()}
         <ButtonsContainer>
-          <Link to="/cart">
+          <Link onClick={closeCart} to="/cart">
             <Button feature="go-to-bag" children="view bag" />
           </Link>
           <Button feature="go-to-checkout" children="check out" />

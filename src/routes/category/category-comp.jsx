@@ -5,15 +5,44 @@ import { default as ProductCard } from "../../components/product-card/product-ca
 import { Container, Title, ProductsList } from "./category-styles";
 
 export class Category extends Component {
+  constructor() {
+    super();
+    this.state = {
+      limit: 6,
+    };
+  }
+
+  handleScroll = (event) => {
+    const scrollHeight = event.target.documentElement.scrollHeight;
+    const currentHeight =
+      event.target.documentElement.scrollTop + window.innerHeight;
+    if (currentHeight + 1 >= scrollHeight) {
+      this.setState({
+        limit: this.state.limit + 3,
+      });
+    }
+  };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
   render() {
     const { products, category } = this.props;
     return (
       <Container>
         <Title>{category}</Title>
         <ProductsList>
-          {products.map(({ id }) => (
-            <ProductCard id={id} key={id} />
-          ))}
+          {products
+            ?.filter((item) => products.indexOf(item) < this.state.limit)
+            .map(({ id }) => (
+              <ProductCard id={id} key={id} />
+            ))}
         </ProductsList>
       </Container>
     );

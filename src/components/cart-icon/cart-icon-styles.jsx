@@ -5,6 +5,7 @@ export const Container = styled.div`
   position: relative;
   cursor: pointer;
   user-select: none;
+  z-index:4;
 `;
 export const Count = styled.span`
   width: 20px;

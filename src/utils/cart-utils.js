@@ -55,11 +55,11 @@ export const calculCartTotal = (cartItems, selectedCurrency) => {
   const total = cartItems.reduce((cartTotal, item) => {
     const { amount } = extractPrice(item.prices, selectedCurrency);
 
-    return cartTotal + amount * item.quantity
+    return cartTotal + amount * item.quantity;
   }, 0);
-  return total.toFixed(2)
+  return total.toFixed(2);
 };
 
 export const calculTax = (total) => {
-  return (total * 0.21).toFixed(2)
-}
+  return (total * 0.21).toFixed(2);
+};

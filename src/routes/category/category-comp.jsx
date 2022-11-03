@@ -13,10 +13,15 @@ export class Category extends Component {
   }
 
   handleScroll = (event) => {
+    const { products } = this.props;
     const scrollHeight = event.target.documentElement.scrollHeight;
     const currentHeight =
       event.target.documentElement.scrollTop + window.innerHeight;
-    if (currentHeight + 1 >= scrollHeight) {
+    if (
+      currentHeight + 1 >= scrollHeight &&
+      // to avoid extra rerenders if there is no more products
+      this.state.limit < products.length
+    ) {
       this.setState({
         limit: this.state.limit + 3,
       });

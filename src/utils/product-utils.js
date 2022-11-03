@@ -3,7 +3,7 @@ export const extractPrice = (pricesArray, selectedCurrency) => {
     ({ currency }) => currency.symbol === selectedCurrency
   );
 
-  return {...price, amount: Math.floor(price.amount).toFixed(2)}
+  return { ...price, amount: Math.floor(price.amount).toFixed(2) };
 };
 
 export const selectAttributesFunc = (
@@ -12,13 +12,14 @@ export const selectAttributesFunc = (
   newAttributename
 ) => {
   const newAttributesArray = attributesArray.map((attribute) =>
-    attribute.name === newAttributename
+    attribute.name === newAttributename // find the concerned attribute
       ? {
           ...attribute,
-          items: attribute.items.map((item) =>
-            item.value === newAttributeValue && !item.selected
-              ? { ...item, selected: true }
-              : { ...item, selected: false }
+          items: attribute.items.map(
+            (item) =>
+              item.value === newAttributeValue && !item.selected // find the concerned item
+                ? { ...item, selected: true } // if it is not selected make it selected
+                : { ...item, selected: false } // otherwise return the item unselected
           ),
         }
       : attribute

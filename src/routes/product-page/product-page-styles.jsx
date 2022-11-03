@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   margin: 150px 0;
   display: flex;
-  padding: 0 100px ;
+  padding: 0 100px;
 `;
 
 export const Carrousel = styled.div`

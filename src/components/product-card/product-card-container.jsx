@@ -5,6 +5,7 @@ import { GET_PRODUCT_BY_ID_FOR_CARD } from "../../graphql/queries";
 import { ADD_TO_CART } from "../../graphql/mutations";
 
 import ProductCard from "./product-card-comp";
+
 import { selectDefaultAttributes } from "../../utils/product-utils";
 
 export class ProductCardContainer extends Component {

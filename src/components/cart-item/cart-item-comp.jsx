@@ -30,40 +30,61 @@ export class CartItem extends Component {
     return <Price big={big}>{`${currency.symbol}${amount}`}</Price>;
   };
 
-  render() {
+  renderQuantityEdit = () => {
     const {
+      big,
       increase,
       decrease,
+      product: { quantity },
+    } = this.props;
+    return (
+      <QuantityEdit big={big}>
+        <Square big={big} onClick={increase}>
+          &#43;
+        </Square>
+        {quantity}
+        <Square big={big} onClick={decrease}>
+          &#8722;
+        </Square>
+      </QuantityEdit>
+    );
+  };
+
+  renderProductImage = () => {
+    const {
       big,
-      product: { brand, name, gallery, quantity, attributes, id, category },
+      product: { gallery },
+    } = this.props;
+
+    if (big) {
+      return <Slider imagesUrl={gallery} />;
+    } else {
+      return (
+        <ImageContainer>
+          <Image src={gallery[0]} />
+        </ImageContainer>
+      );
+    }
+  };
+
+  render() {
+    const {
+      big,
+      product: { brand, name, attributes, id, category },
     } = this.props;
 
     return (
       <Container big={big}>
         <ProductInfo big={big}>
-          <ProductLink to={`/${category}/${id}`} big={big}>
+          <ProductLink big={big} to={`/${category}/${id}`}>
             <Brand big={big}>{brand}</Brand>
             <Name big={big}>{name}</Name>
           </ProductLink>
           {this.renderPrice()}
           <Attributes big={big} attributes={attributes} />
         </ProductInfo>
-        <QuantityEdit big={big}>
-          <Square big={big} onClick={increase}>
-            &#43;
-          </Square>
-          {quantity}
-          <Square big={big} onClick={decrease}>
-            &#8722;
-          </Square>
-        </QuantityEdit>
-        {big ? (
-          <Slider imagesUrl={gallery} />
-        ) : (
-          <ImageContainer>
-            <Image src={gallery[0]} />
-          </ImageContainer>
-        )}
+        {this.renderQuantityEdit()}
+        {this.renderProductImage()}
       </Container>
     );
   }

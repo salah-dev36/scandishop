@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { persistCache } from "apollo3-cache-persist"
+import { persistCache } from "apollo3-cache-persist";
 
 import { resolvers } from "./resolvers";
 
@@ -47,8 +47,8 @@ const cache = new InMemoryCache({
 
 persistCache({
   cache,
-  storage: localStorage
-})
+  storage: localStorage,
+});
 
 export const client = new ApolloClient({
   uri: "http://localhost:4000/",

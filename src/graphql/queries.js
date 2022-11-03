@@ -101,6 +101,17 @@ export const GET_SELECTED_CURRENCY_AND_IS_SWITCHER_OPEN = gql`
   }
 `;
 
+export const GET_CURRENCY_SWITCHER_DATA = gql`
+  query {
+    selectedCurrency @client
+    isCurrencySwitcherOpen @client
+    currencies {
+      label
+      symbol
+    }
+  }
+`;
+
 // cart related queries
 
 export const GET_IS_CART_OPEN = gql`

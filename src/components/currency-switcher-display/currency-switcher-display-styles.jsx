@@ -8,7 +8,7 @@ export const Container = styled.div`
   font-size: 18px;
   cursor: pointer;
   background-color: white;
-  z-index:4;
+  z-index: 4;
 `;
 
 export const CurrencyItem = styled.div`

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import MiniCartDisplayContainer from "../mini-cart-display/mini-cart-display-container";
+import { default as MiniCartDisplay } from "../mini-cart-display/mini-cart-display-container";
 import { default as CartIcon } from "../cart-icon/cart-icon-container";
 
 import { Overlay } from "./mini-cart-styles";
@@ -18,9 +18,10 @@ export class MiniCart extends Component {
         <div ref={this.miniCartRef}>
           <CartIcon itemsCount={itemsCount} />
           {isCartOpen && (
-            <MiniCartDisplayContainer
+            <MiniCartDisplay
               cartItems={cartItems}
               miniCartRef={this.miniCartRef}
+              itemsCount={itemsCount}
             />
           )}
         </div>

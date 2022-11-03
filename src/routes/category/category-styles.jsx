@@ -20,7 +20,7 @@ export const ProductsList = styled.div`
   max-width: 1240px;
   margin: 100px auto;
 
-  @media screen and (max-width:1400px) {
+  @media screen and (max-width: 1400px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;

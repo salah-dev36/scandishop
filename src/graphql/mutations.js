@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-
 // currency related mutations
 
 export const TOGGLE_CURRENCY = gql`
@@ -21,7 +20,7 @@ export const SELECT_CURRENCY = gql`
   }
 `;
 
-// cart related mutations 
+// cart related mutations
 
 export const TOGGLE_CART = gql`
   mutation ToggleCart {

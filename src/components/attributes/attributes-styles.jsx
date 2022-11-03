@@ -19,7 +19,7 @@ export const AttributeName = styled.span`
 export const AttributeGroupe = styled.div`
   display: flex;
   padding: 1px;
-  margin-top:7px;
+  margin-top: 7px;
 
   ${({ big }) =>
     big

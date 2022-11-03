@@ -15,10 +15,10 @@ import {
   Title,
 } from "./product-page-styles";
 
+import Attributes from "../../components/attributes/attributes-comp";
 import Button from "../../components/button/button-comp";
 
 import { extractPrice, selectAttributesFunc } from "../../utils/product-utils";
-import Attributes from "../../components/attributes/attributes-comp";
 
 export class ProductPage extends Component {
   constructor(props) {

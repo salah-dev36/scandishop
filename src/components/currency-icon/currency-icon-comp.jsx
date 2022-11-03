@@ -6,9 +6,10 @@ import { ReactComponent as ArrowUp } from "../../assets/arrow-head-up.svg";
 
 export class CurrencyIcon extends Component {
   render() {
-    const { selectedCurrency, isCurrencySwitcherOpen } = this.props;
+    const { selectedCurrency, isCurrencySwitcherOpen, toggleCurrency } =
+      this.props;
     return (
-      <Container onClick={this.props.toggleCurrency}>
+      <Container onClick={toggleCurrency}>
         {selectedCurrency}{" "}
         {isCurrencySwitcherOpen ? <ArrowUp /> : <ArrowDown />}
       </Container>

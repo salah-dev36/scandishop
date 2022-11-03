@@ -5,15 +5,11 @@ import { GET_CATEGORIES } from "../../graphql/queries";
 
 import Navigation from "./navigation-comp";
 
-
-
 export class NavigationContainer extends Component {
   render() {
     return (
       <Query query={GET_CATEGORIES}>
-        {({ data, loading }) =>
-          !loading && <Navigation {...this.props} categories={data.categories} />
-        }
+        {({ data, loading }) => !loading && <Navigation {...data} />}
       </Query>
     );
   }

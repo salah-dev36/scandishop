@@ -5,7 +5,10 @@ import { Container, NavigationLink } from "./navigation-styles";
 
 export class Navigation extends Component {
   redirectToALL = () => {
-    const { categories, location: { pathname }} = this.props;
+    const {
+      categories,
+      location: { pathname },
+    } = this.props;
 
     if (pathname === "/") {
       return <Redirect to={categories[0].name} />;
@@ -13,9 +16,9 @@ export class Navigation extends Component {
   };
 
   render() {
-    const { categories, closeCartAndCurrency } = this.props;
+    const { categories } = this.props;
     return (
-      <Container onClick={closeCartAndCurrency}>
+      <Container>
         {this.redirectToALL()}
         {categories.map(({ name }) => (
           <NavigationLink to={`/${name}`} key={name} activeClassName="any">

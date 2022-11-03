@@ -1,72 +1,31 @@
 import React, { Component } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
 
-import {
-  Container,
-  ItemsContainer,
-  Total,
-  ButtonsContainer,
-  CartEmpty,
-  Title,
-} from "./mini-cart-styles";
+import MiniCartDisplayContainer from "../mini-cart-display/mini-cart-display-container";
+import { default as CartIcon } from "../cart-icon/cart-icon-container";
 
-import { default as CartItem } from "../cart-item/cart-item-container";
-import Button from "../button/button-comp";
-
-import { calculCartTotal } from "../../utils/cart-utils";
+import { Overlay } from "./mini-cart-styles";
 
 export class MiniCart extends Component {
-  
-  renderCartItems = () => {
-    const { cartItems, selectedCurrency } = this.props;
-
-    if (cartItems.length === 0) {
-      return <CartEmpty>Cart is empty</CartEmpty>;
-    } else {
-      return (
-        <ItemsContainer>
-          {cartItems.map((cartItem) => (
-            <CartItem
-              selectedCurrency={selectedCurrency}
-              key={uuidv4()}
-              product={cartItem}
-            />
-          ))}
-        </ItemsContainer>
-      );
-    }
-  };
-
-  renderCartTotal = () => {
-    const { cartItems, selectedCurrency } = this.props;
-    const cartTotal = calculCartTotal(cartItems, selectedCurrency);
-
-    return (
-      <Total>
-        <span>total</span>
-        <span>{`${selectedCurrency}${cartTotal}`}</span>
-      </Total>
-    );
-  };
+  constructor() {
+    super();
+    this.miniCartRef = React.createRef();
+  }
 
   render() {
-    const { itemsCount, closeCart } = this.props;
-
+    const { cartItems, itemsCount, isCartOpen } = this.props;
     return (
-      <Container>
-        <Title>
-          <span>My Bag,</span> {itemsCount} items
-        </Title>
-        {this.renderCartItems()}
-        {this.renderCartTotal()}
-        <ButtonsContainer>
-          <Link onClick={closeCart} to="/cart">
-            <Button feature="go-to-bag" children="view bag" />
-          </Link>
-          <Button feature="go-to-checkout" children="check out" />
-        </ButtonsContainer>
-      </Container>
+      <>
+        <div ref={this.miniCartRef}>
+          <CartIcon itemsCount={itemsCount} />
+          {isCartOpen && (
+            <MiniCartDisplayContainer
+              cartItems={cartItems}
+              miniCartRef={this.miniCartRef}
+            />
+          )}
+        </div>
+        {isCartOpen && <Overlay />}
+      </>
     );
   }
 }

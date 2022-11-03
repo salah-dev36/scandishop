@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Query } from "@apollo/client/react/components";
 
-import { GET_CART_INFO } from "../../graphql/queries";
+import { GET_CART_DATA } from "../../graphql/queries";
 
 import Cart from "./cart-comp";
 
 export class CartContainer extends Component {
   render() {
     return (
-      <Query query={GET_CART_INFO}>
+      <Query query={GET_CART_DATA}>
         {({ data, loading }) => !loading && <Cart {...data} />}
       </Query>
     );

@@ -1,34 +1,24 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "@apollo/client/react/components";
-
-import { GET_CURRENCIES } from "../../graphql/queries";
-import { SELECT_CURRENCY, TOGGLE_CURRENCY } from "../../graphql/mutations";
-
 import CurrencySwitcher from "./currency-switcher-comp";
+import { gql } from "@apollo/client";
+import { Query } from "@apollo/client/react/components";
+
+const GET_CURRENCY_SWITCHER_DATA = gql`
+  query {
+    selectedCurrency @client
+    isCurrencySwitcherOpen @client
+    currencies {
+      label
+      symbol
+    }
+  }
+`;
 
 export class CurrencySwitcherContainer extends Component {
   render() {
     return (
-      <Query query={GET_CURRENCIES}>
-        {({ data, loading }) =>
-          !loading && (
-            <Mutation mutation={SELECT_CURRENCY}>
-              {(selectCurrency) => (
-                <Mutation mutation={TOGGLE_CURRENCY}>
-                  {(toggleCurrency) => (
-                    <CurrencySwitcher
-                      toggleCurrency={toggleCurrency}
-                      selectCurrency={(newCurrency) =>
-                        selectCurrency({ variables: { newCurrency } })
-                      }
-                      {...data}
-                    />
-                  )}
-                </Mutation>
-              )}
-            </Mutation>
-          )
-        }
+      <Query query={GET_CURRENCY_SWITCHER_DATA}>
+        {({ data }) => <CurrencySwitcher {...data} />}
       </Query>
     );
   }

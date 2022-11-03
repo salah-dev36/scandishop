@@ -1,22 +1,15 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "@apollo/client/react/components";
+import { Query } from "@apollo/client/react/components";
 
-import { GET_CART_INFO } from "../../graphql/queries";
-import { CLOSE_CART } from "../../graphql/mutations";
+import { GET_MINI_CART_DATA } from "../../graphql/queries";
 
 import MiniCart from "./mini-cart-comp";
 
 export class MiniCartContainer extends Component {
   render() {
     return (
-      <Query query={GET_CART_INFO}>
-        {({ loading, data }) =>
-          !loading && (
-            <Mutation mutation={CLOSE_CART}>
-              {(closeCart) => <MiniCart closeCart={closeCart} {...data} />}
-            </Mutation>
-          )
-        }
+      <Query query={GET_MINI_CART_DATA}>
+        {({ data }) => <MiniCart {...data} />}
       </Query>
     );
   }

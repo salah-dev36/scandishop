@@ -22,16 +22,6 @@ export const Features = styled.div`
   gap: 22px;
 `;
 
-export const Overlay= styled.div`
-width: 100%;
-height:100%;
-position:fixed;
-background:background: rgb(0,0,0);
-background: ${({feature}) => feature === "cart" ? "linear-gradient(180deg, rgba(0,0,0,0) 78px, rgba(57,55,72,0.22) 78px);" : "transparent"};
-right: 0;
-top: 0;
-`
-
 export const Logo = styled.img`
 align-self: center;
 `

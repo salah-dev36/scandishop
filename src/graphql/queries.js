@@ -1,5 +1,7 @@
 import { gql } from "@apollo/client";
 
+// categories and product queries
+
 export const GET_CATEGORIES = gql`
   query {
     categories {
@@ -79,12 +81,7 @@ export const GET_PRODUCT_BY_ID_FOR_PAGE = gql`
   }
 `;
 
-export const GET_SELECTED_CURRENCY_AND_IS_SWITCHER_OPEN = gql`
-  query {
-    selectedCurrency @client
-    isCurrencySwitcherOpen @client
-  }
-`;
+// currency related queries
 
 export const GET_IS_CURRENCY_SWITCHER_OPEN = gql`
   query {
@@ -92,24 +89,22 @@ export const GET_IS_CURRENCY_SWITCHER_OPEN = gql`
   }
 `;
 
-export const GET_CURRENCIES = gql`
+export const GET_SELECTED_CURRENCY = gql`
   query {
-    currencies {
-      label
-      symbol
-    }
+    selectedCurrency @client
   }
 `;
+export const GET_SELECTED_CURRENCY_AND_IS_SWITCHER_OPEN = gql`
+  query {
+    selectedCurrency @client
+    isCurrencySwitcherOpen @client
+  }
+`;
+
+// cart related queries
 
 export const GET_IS_CART_OPEN = gql`
   query {
-    isCartOpen @client
-  }
-`;
-
-export const GET_IS_CART_AND_CURRENCY_OPEN = gql`
-  query {
-    isCurrencySwitcherOpen @client
     isCartOpen @client
   }
 `;
@@ -120,16 +115,18 @@ export const GET_CART_ITEMS = gql`
   }
 `;
 
-export const GET_CART_INFO = gql`
+export const GET_MINI_CART_DATA = gql`
   query {
     cartItems @client
-    selectedCurrency @client
     itemsCount @client
+    isCartOpen @client
   }
 `;
 
-export const GET_ITEMS_COUNT = gql`
+export const GET_CART_DATA = gql`
   query {
+    cartItems @client
     itemsCount @client
+    selectedCurrency @client
   }
 `;

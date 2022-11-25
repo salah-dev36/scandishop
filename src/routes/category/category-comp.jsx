@@ -38,15 +38,19 @@ export class Category extends Component {
   }
 
   render() {
-    const { products, category } = this.props;
+    const { products, category, selectedCurrency } = this.props;
     return (
       <Container>
         <Title>{category}</Title>
         <ProductsList>
           {products
             ?.filter((item) => products.indexOf(item) < this.state.limit)
-            .map(({ id }) => (
-              <ProductCard id={id} key={id} />
+            .map((product) => (
+              <ProductCard
+                selectedCurrency={selectedCurrency}
+                product={product}
+                key={product.id}
+              />
             ))}
         </ProductsList>
       </Container>

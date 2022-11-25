@@ -10,13 +10,36 @@ export const GET_CATEGORIES = gql`
   }
 `;
 
-export const GET_PRODUCTS_ID_BY_CATEGORY = gql`
+
+export const GET_PRODUCTS_BY_CATEGORY = gql`
   query ($title: String!) {
     category(input: { title: $title }) {
       products {
+        name
+        brand
+        gallery
+        inStock
+        category
         id
+        attributes {
+          id
+          name
+          type
+          items {
+            displayValue
+            value
+            id
+          }
+        }
+        prices {
+          amount
+          currency {
+            symbol
+          }
+        }
       }
     }
+    selectedCurrency @client
   }
 `;
 

@@ -6,5 +6,4 @@ export const Container = styled.div`
   min-width: 21px;
   cursor: pointer;
   user-select: none;
-  z-index: 4;
 `;

@@ -19,14 +19,21 @@ export class CurrencySwitcherDisplay extends Component {
   };
 
   render() {
-    const { currencies, selectCurrency } = this.props;
+    const { currencies, selectCurrency, selectedCurrency } = this.props;
+
     return (
       <Container>
-        {currencies.map(({ label, symbol }) => (
-          <CurrencyItem onClick={() => selectCurrency(symbol)} key={label}>
-            {symbol} {label}
-          </CurrencyItem>
-        ))}
+        {currencies.map(({ label, symbol }) => {
+          return (
+            <CurrencyItem
+              selected={symbol === selectedCurrency}
+              onClick={() => selectCurrency(symbol)}
+              key={label}
+            >
+              {symbol} {label}
+            </CurrencyItem>
+          );
+        })}
       </Container>
     );
   }

@@ -8,7 +8,7 @@ export const Container = styled.div`
   font-size: 18px;
   cursor: pointer;
   background-color: white;
-  z-index: 4;
+  z-index: 3;
 `;
 
 export const CurrencyItem = styled.div`
@@ -17,7 +17,7 @@ export const CurrencyItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  background-color: ${({ selected }) => selected === true && "#eeeeee"};
   &:hover {
     background-color: #eeeeee;
   }

@@ -98,7 +98,9 @@ export class ProductPage extends Component {
     return (
       <Container>
         {this.renderCarrousel()}
-        <MainImage url={this.state.mainImage} />
+        <MainImage inStock={inStock} url={this.state.mainImage}>
+          {!inStock && "OUT OF STOCK"}
+        </MainImage>
         <ProductInfo>
           <Title>
             <Brand>{brand}</Brand>

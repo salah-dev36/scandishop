@@ -21,6 +21,7 @@ export class CurrencySwitcher extends Component {
           <CurrencySwitcherDisplay
             switcherRef={this.SwitcherRef}
             currencies={currencies}
+            selectedCurrency={selectedCurrency}
           />
         )}
       </div>

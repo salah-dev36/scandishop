@@ -3,14 +3,14 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: 80px;
   padding: 0 100px;
-  min-width:950px;
+  min-width: 950px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   position: sticky;
   background-color: white;
   top: 0;
-  z-index: 3;
+  z-index: 2;
 `;
 
 export const Features = styled.div`
@@ -23,5 +23,5 @@ export const Features = styled.div`
 `;
 
 export const Logo = styled.img`
-align-self: center;
-`
+  align-self: center;
+`;

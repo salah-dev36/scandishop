@@ -46,7 +46,6 @@ export const OutOfStock = styled.span`
   position: absolute;
   opacity: 0.8;
   font-size: 24px;
-  z-index: 2;
   left: 106px;
   top: 158px;
 `;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 325px;
-  height: 677px;
+  max-height: 677px;
   background-color: white;
   padding: 32px 12px 32px 16px;
   position: absolute;
@@ -11,7 +11,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  z-index: 4;
+  z-index: 3;
 `;
 
 export const Title = styled.div`
@@ -21,7 +21,7 @@ export const Title = styled.div`
 `;
 export const ItemsContainer = styled.div`
   widht: 293px;
-  height: 440px;
+  max-height: 440px;
   display: flex;
   padding-right: 1px;
   flex-direction: column;

@@ -7,6 +7,10 @@ import { GET_CART_ITEMS } from "./queries";
 
 const cache = new InMemoryCache({
   typePolicies: {
+    AttributeSet: {
+      // identify by id and items to avoid misidentification for jacket, sneaker, and imac because some of the fields have same id and typeName
+      keyFields: ["id", "items", ["id", "value", "displayValue"]],
+    },
     Query: {
       fields: {
         selectedCurrency: {

@@ -32,6 +32,12 @@ export const MainImage = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   margin-right: 100px;
+  opacity: ${({ inStock }) => !inStock && "0.5"};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 600;
 `;
 
 export const ProductInfo = styled.div`

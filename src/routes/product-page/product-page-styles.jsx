@@ -4,6 +4,13 @@ export const Container = styled.div`
   margin: 150px 0;
   display: flex;
   padding: 0 100px;
+
+  @media screen and (max-width: 642px) {
+    padding: 10px;
+    margin: 50px auto;
+    flex-direction: column;
+    gap: 40px;
+  }
 `;
 
 export const Carrousel = styled.div`
@@ -11,6 +18,9 @@ export const Carrousel = styled.div`
   flex-direction: column;
   gap: 40px;
   margin-right: 40px;
+  @media screen and (max-width: 642px) {
+    flex-direction: row;
+  }
 `;
 
 export const CarrouselItem = styled.div`
@@ -38,6 +48,13 @@ export const MainImage = styled.div`
   align-items: center;
   font-size: 30px;
   font-weight: 600;
+
+  @media screen and (max-width: 642px) {
+    order: -1;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
 `;
 
 export const ProductInfo = styled.div`
@@ -46,6 +63,10 @@ export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  @media screen and (max-width: 642px) {
+    gap: 5px;
+    margin: 0 auto;
+  }
 `;
 
 export const Title = styled.div``;
@@ -64,6 +85,7 @@ export const Name = styled.h2`
 export const Price = styled.span`
   font-size: 24px;
   font-weight: 700;
+  align-self: start;
 `;
 
 export const PriceTitle = styled.span`
@@ -72,6 +94,7 @@ export const PriceTitle = styled.span`
   text-transform: uppercase;
   display: block;
   margin-top: 12px;
+  align-self: start;
 `;
 
 export const Description = styled.div``;

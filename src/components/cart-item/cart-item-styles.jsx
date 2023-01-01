@@ -9,7 +9,12 @@ export const Container = styled.div`
     big &&
     `
     padding: 24px 0; 
-    border-top: 1px solid #E5E5E5
+    border-top: 1px solid #E5E5E5;
+    @media screen and (max-width: 829px) {
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+    }
   `}
 `;
 
@@ -27,6 +32,9 @@ export const Brand = styled.span`
     `
       font-weight: 700; 
       font-size: 30px; 
+      @media screen and (max-width: 829px) {
+        font-size: 20px;
+      }
     `}
 `;
 
@@ -59,7 +67,19 @@ export const QuantityEdit = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1px;
-  font-size: ${({ big }) => big && "24px"};
+
+  ${({ big }) =>
+    big &&
+    `
+    font-size: 24px;
+    @media screen and (max-width: 829px) {
+      flex-direction: row-reverse;
+      padding: 0 15px;
+      order : 1;
+    }
+  `}
+ 
+
 `;
 
 export const Square = styled.button`
@@ -80,6 +100,11 @@ export const Square = styled.button`
       width: 45px;
       height: 45px;
       font-size: 25px;
+      @media screen and (max-width: 829px) {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+      }
   `
       : `
       width: 24px;

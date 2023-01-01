@@ -7,6 +7,10 @@ export const Container = styled.div`
   margin-left: 24px;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 829px) {
+    align-self: center;
+    height: 250px;
+  }
 `;
 
 export const ProductImage = styled.img`

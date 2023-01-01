@@ -4,6 +4,11 @@ export const Container = styled.div`
   margin: 80px 0 200px 0;
   padding: 0 100px;
   min-width: 900px;
+  @media screen and (max-width: 829px) {
+    min-width: 375px;
+    margin: 80px auto;
+    padding: 20px;
+  }
 `;
 
 export const EmptyCart = styled.div`

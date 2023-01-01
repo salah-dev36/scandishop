@@ -10,9 +10,17 @@ export const Container = styled.div`
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
+  @media screen and (max-width: 642px) {
+    width: 354px;
+    padding: 16px 0;
+  }
+
+
   &:hover {
-    transform: scale(1.07);
-    box-shadow: rgba(168, 172, 176, 0.19) 0px 4px 35px;
+    @media screen and (min-width: 642px) {
+      transform: scale(1.07);
+      box-shadow: rgba(168, 172, 176, 0.19) 0px 4px 35px;
+    }
   }
 `;
 
@@ -23,6 +31,9 @@ export const ProductImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: start;
+  @media screen and (min-width: 642px) {
+    width: auto;
+  }
 `;
 
 export const ProductImage = styled.img`

@@ -12,6 +12,11 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 32px;
   z-index: 3;
+
+  @media screen and (max-width: 642px) {
+    right: 17px;
+    max-height: 545px;
+  }
 `;
 
 export const Title = styled.div`

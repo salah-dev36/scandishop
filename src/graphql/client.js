@@ -55,7 +55,7 @@ persistCache({
 });
 
 export const client = new ApolloClient({
-  uri: "http://localhost:4000/",
+  uri: "https://scandishop-graphql-server.herokuapp.com/",
   cache,
   resolvers,
 });

@@ -43,6 +43,10 @@ export const Attribute = styled.button`
       ? `
       width: 64px;
       height: 45px;
+      @media screen and (max-width: 829px) {
+        width: 50px;
+        height: 35px;
+      }
   `
       : `
       width: 32px;

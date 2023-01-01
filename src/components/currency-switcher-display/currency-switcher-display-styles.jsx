@@ -9,6 +9,11 @@ export const Container = styled.div`
   cursor: pointer;
   background-color: white;
   z-index: 3;
+
+  @media screen and (max-width: 642px) {
+    right: 30px;
+    font-size: 14px;
+  }
 `;
 
 export const CurrencyItem = styled.div`
@@ -20,5 +25,10 @@ export const CurrencyItem = styled.div`
   background-color: ${({ selected }) => selected === true && "#eeeeee"};
   &:hover {
     background-color: #eeeeee;
+  }
+
+  @media screen and (max-width: 642px) {
+    width:90px;
+    height: 36px;
   }
 `;

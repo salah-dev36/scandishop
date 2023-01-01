@@ -10,7 +10,6 @@ export const GET_CATEGORIES = gql`
   }
 `;
 
-
 export const GET_PRODUCTS_BY_CATEGORY = gql`
   query ($title: String!) {
     category(input: { title: $title }) {

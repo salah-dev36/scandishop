@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Header from "./routes/header/header-comp";
-import { default as Category } from "./routes/category/category-container";
-import { default as ProductPage } from "./routes/product-page/product-page-container";
-import { default as Cart } from "./routes/cart/cart-container";
+const Header = React.lazy(() => import("./routes/header/header-comp"));
+const Category = React.lazy(() =>
+  import("./routes/category/category-container")
+);
+const ProductPage = React.lazy(() =>
+  import("./routes/product-page/product-page-container")
+);
+const Cart = React.lazy(() => import("./routes/cart/cart-container"));
 
 export class App extends Component {
   render() {

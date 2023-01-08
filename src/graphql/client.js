@@ -55,7 +55,7 @@ persistCache({
 });
 
 export const client = new ApolloClient({
-  uri: "https://scandishop-graphql-server.herokuapp.com/",
+  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
   cache,
   resolvers,
 });

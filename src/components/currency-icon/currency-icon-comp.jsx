@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { Container } from "./currency-icon-styles";
 import { ReactComponent as ArrowDown } from "../../assets/arrow-head-down.svg";
 import { ReactComponent as ArrowUp } from "../../assets/arrow-head-up.svg";
 
-export class CurrencyIcon extends Component {
+export class CurrencyIcon extends PureComponent {
   render() {
     const { selectedCurrency, isCurrencySwitcherOpen, toggleCurrency } =
       this.props;

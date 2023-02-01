@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import {
   Container,
@@ -18,7 +18,7 @@ import Slider from "../slider/slider-comp";
 
 import { extractPrice } from "../../utils/product-utils";
 
-export class CartItem extends Component {
+export class CartItem extends PureComponent {
   renderPrice = () => {
     const {
       selectedCurrency,

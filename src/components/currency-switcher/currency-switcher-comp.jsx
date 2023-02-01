@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { default as CurrencyIcon } from "../currency-icon/currency-icon-container";
 import { default as CurrencySwitcherDisplay } from "../currency-switcher-display/currency-switcher-display-container";
 
-export class CurrencySwitcher extends Component {
+export class CurrencySwitcher extends PureComponent {
   constructor() {
     super();
     this.SwitcherRef = React.createRef();

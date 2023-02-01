@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Mutation } from "@apollo/client/react/components";
 
 import { TOGGLE_CART } from "../../graphql/mutations";
 
 import CartIcon from "./cart-icon-comp";
 
-export class CartIconContainer extends Component {
+export class CartIconContainer extends PureComponent {
   render() {
     return (
       <Mutation mutation={TOGGLE_CART}>

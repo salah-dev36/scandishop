@@ -1,23 +1,33 @@
 import { extractPrice } from "./product-utils";
 
-const extractSelectedAttributes = (attributes) => {
-  return attributes
-    ?.map((attri) => attri.items.find((item) => item.selected === true))
-    .filter((element) => element);
+//find product with same id and same selected attributes
+const findExistingProduct = (cartItems, id, attributes) => {
+  return cartItems.find((cartItem) => {
+    return (
+      cartItem.id === id &&
+      JSON.stringify(attributes) === JSON.stringify(cartItem.attributes)
+    );
+  });
 };
 
+//add item to cart
 export const addItemToCart = (cartItems, productToAdd, productAttributes) => {
-  const selectedAttributes = extractSelectedAttributes(productAttributes);
+  const selectedAttributesCount = productAttributes.reduce((acc, { items }) => {
+    const a = items.some(({ selected }) => selected);
+    return a ? acc + 1 : acc;
+  }, 0);
 
-  const existingProduct = cartItems.find(
-    (cartItem) =>
-      cartItem.id === productToAdd.id &&
-      JSON.stringify(selectedAttributes) ===
-        JSON.stringify(extractSelectedAttributes(cartItem.attributes))
+  const existingProduct = findExistingProduct(
+    cartItems,
+    productToAdd.id,
+    productAttributes
   );
-  if (selectedAttributes.length < productAttributes.length) {
-    alert("please select missing attributes in order to add to cart");
+
+  if (selectedAttributesCount < productAttributes.length) {
+    // check if all attributes are selected
+    alert("please select all attributes in order to add to cart");
   } else {
+    // if product exists increase its quantity
     if (existingProduct) {
       return cartItems.map((cartItem) =>
         cartItem === existingProduct
@@ -25,6 +35,7 @@ export const addItemToCart = (cartItems, productToAdd, productAttributes) => {
           : cartItem
       );
     }
+    //else add it to the cart with quantity 1
     return [
       ...cartItems,
       { ...productToAdd, attributes: productAttributes, quantity: 1 },
@@ -32,32 +43,29 @@ export const addItemToCart = (cartItems, productToAdd, productAttributes) => {
   }
 };
 
+//remove item from cart
 export const removeItemFromCart = (cartItems, productToRemove) => {
-  const existingProduct = cartItems.find(
-    (cartItem) =>
-      cartItem.id === productToRemove.id &&
-      JSON.stringify(extractSelectedAttributes(productToRemove.attributes)) ===
-        JSON.stringify(extractSelectedAttributes(cartItem.attributes))
-  );
+  const { id, attributes } = productToRemove;
+  const existingProduct = findExistingProduct(cartItems, id, attributes);
 
-  if (existingProduct && existingProduct.quantity === 1) {
-    return cartItems.filter((cartItem) => cartItem !== productToRemove);
-  }
-
-  return cartItems.map((cartItem) =>
-    cartItem === productToRemove
-      ? { ...cartItem, quantity: cartItem.quantity - 1 }
-      : cartItem
-  );
+  //if product quantity is 1, delete product, if not decrease quantity by 1
+  return existingProduct?.quantity === 1
+    ? cartItems.filter((cartItem) => cartItem !== productToRemove)
+    : cartItems.map((cartItem) =>
+        cartItem === productToRemove
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      );
 };
 
 export const calculCartTotal = (cartItems, selectedCurrency) => {
-  const total = cartItems.reduce((cartTotal, item) => {
-    const { amount } = extractPrice(item.prices, selectedCurrency);
+  return cartItems
+    .reduce((cartTotal, item) => {
+      const { amount } = extractPrice(item.prices, selectedCurrency);
 
-    return cartTotal + amount * item.quantity;
-  }, 0);
-  return total.toFixed(2);
+      return cartTotal + amount * item.quantity;
+    }, 0)
+    .toFixed(2);
 };
 
 export const calculTax = (total) => {

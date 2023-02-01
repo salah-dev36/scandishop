@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import parse from "html-react-parser";
 
 import {
@@ -20,7 +20,7 @@ import Button from "../../components/button/button-comp";
 
 import { extractPrice, selectAttributesFunc } from "../../utils/product-utils";
 
-export class ProductPage extends Component {
+export class ProductPage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

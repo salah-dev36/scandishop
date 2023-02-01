@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import {
   Container,
   LeftArrowBox,
@@ -9,7 +9,7 @@ import {
 import { ReactComponent as RightArrow } from "../../assets/arrow-head-right.svg";
 import { ReactComponent as LeftArrow } from "../../assets/arrow-head-left.svg";
 
-export class Slider extends Component {
+export class Slider extends PureComponent {
   constructor() {
     super();
     this.state = {

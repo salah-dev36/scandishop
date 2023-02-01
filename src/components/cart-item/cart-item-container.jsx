@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Mutation } from "@apollo/client/react/components";
 
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../../graphql/mutations";
 import CartItem from "./cart-item-comp";
 
-export class CartItemContainer extends Component {
+export class CartItemContainer extends PureComponent {
   render() {
     const { product } = this.props;
     return (

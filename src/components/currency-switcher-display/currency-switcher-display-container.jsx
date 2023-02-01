@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Mutation } from "@apollo/client/react/components";
 
 import {
@@ -8,7 +8,7 @@ import {
 
 import CurrencySwitcherDisplay from "./currency-switcher-display-comp";
 
-export class CurrencySwitcherDisplayContainer extends Component {
+export class CurrencySwitcherDisplayContainer extends PureComponent {
   render() {
     return (
       <Mutation mutation={SELECT_CURRENCY}>

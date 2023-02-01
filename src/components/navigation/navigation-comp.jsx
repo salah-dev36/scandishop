@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Redirect, withRouter } from "react-router-dom";
 
 import { Container, NavigationLink } from "./navigation-styles";
 
-export class Navigation extends Component {
+export class Navigation extends PureComponent {
   redirectToALL = () => {
     const {
       categories,

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Query } from "@apollo/client/react/components";
 
 import { GET_PRODUCTS_BY_CATEGORY } from "../../graphql/queries";
@@ -6,7 +6,7 @@ import { GET_PRODUCTS_BY_CATEGORY } from "../../graphql/queries";
 import Category from "./category-comp";
 import Spinner from "../../components/spinner/spinner-comp";
 
-export class CategoryContainer extends Component {
+export class CategoryContainer extends PureComponent {
   render() {
     const { category } = this.props.match.params;
 

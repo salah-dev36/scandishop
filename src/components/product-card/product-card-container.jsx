@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Mutation } from "@apollo/client/react/components";
 
 import { ADD_TO_CART } from "../../graphql/mutations";
@@ -7,7 +7,7 @@ import ProductCard from "./product-card-comp";
 
 import { selectDefaultAttributes } from "../../utils/product-utils";
 
-export class ProductCardContainer extends Component {
+export class ProductCardContainer extends PureComponent {
   render() {
     const { product } = this.props;
 

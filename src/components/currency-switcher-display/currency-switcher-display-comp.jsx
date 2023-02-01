@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { Container, CurrencyItem } from "./currency-switcher-display-styles";
 
-export class CurrencySwitcherDisplay extends Component {
+export class CurrencySwitcherDisplay extends PureComponent {
   componentDidMount() {
     document.addEventListener("mousedown", this.closeOnClickOutside);
   }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Mutation, Query } from "@apollo/client/react/components";
 
 
@@ -7,7 +7,7 @@ import { CLOSE_CART } from "../../graphql/mutations";
 
 import MiniCartDisplay from "./mini-cart-display-comp";
 
-export class MiniCartDisplayContainer extends Component {
+export class MiniCartDisplayContainer extends PureComponent {
   render() {
     return (
       <Query query={GET_SELECTED_CURRENCY}>

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { Container, Data, Label, Row } from "./invoice-styles";
 
 import { calculCartTotal, calculTax } from "../../utils/cart-utils";
 
-export class Invoice extends Component {
+export class Invoice extends PureComponent {
   render() {
     const { cartItems, selectedCurrency, itemsCount } = this.props;
     const total = calculCartTotal(cartItems, selectedCurrency);

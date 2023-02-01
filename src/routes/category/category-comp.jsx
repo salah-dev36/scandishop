@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { default as ProductCard } from "../../components/product-card/product-card-container";
 
 import { Container, Title, ProductsList } from "./category-styles";
 
-export class Category extends Component {
+export class Category extends PureComponent {
   constructor() {
     super();
     this.state = {

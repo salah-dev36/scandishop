@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import {
   AttributeGroupe,
@@ -8,7 +8,7 @@ import {
   Container,
 } from "./attributes-styles";
 
-export class Attributes extends Component {
+export class Attributes extends PureComponent {
   render() {
     const { attributes, selectAttribute, big, selectable } = this.props;
     return (

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import {
   AddToCartBtn,
@@ -7,7 +7,7 @@ import {
   ViewBagBtn,
 } from "./button-styles";
 
-export class Button extends Component {
+export class Button extends PureComponent {
   render() {
     const { feature, addToCart, children, inStock } = this.props;
 

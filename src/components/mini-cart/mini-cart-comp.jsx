@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { default as MiniCartDisplay } from "../mini-cart-display/mini-cart-display-container";
 import { default as CartIcon } from "../cart-icon/cart-icon-container";
 
 import { Overlay } from "./mini-cart-styles";
 
-export class MiniCart extends Component {
+export class MiniCart extends PureComponent {
   constructor() {
     super();
     this.miniCartRef = React.createRef();

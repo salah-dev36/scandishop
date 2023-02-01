@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { Container, EmptyCart, ItemsContainer, Title } from "./cart-styles";
@@ -7,7 +7,7 @@ import { default as CartItem } from "../../components/cart-item/cart-item-contai
 import Invoice from "../../components/invoice/invoice-comp";
 import Button from "../../components/button/button-comp";
 
-export class Cart extends Component {
+export class Cart extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

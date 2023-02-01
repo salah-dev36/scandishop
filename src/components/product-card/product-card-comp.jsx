@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import {
   Container,
@@ -16,7 +16,7 @@ import GreenCartImg from "../../assets/add-to-cart-img.png";
 import { extractPrice } from "../../utils/product-utils";
 import { Link } from "react-router-dom";
 
-export class ProductCard extends Component {
+export class ProductCard extends PureComponent {
   constructor() {
     super();
     this.state = {

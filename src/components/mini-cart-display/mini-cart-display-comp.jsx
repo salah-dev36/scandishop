@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,7 @@ import { default as CartItem } from "../cart-item/cart-item-container";
 
 import { calculCartTotal } from "../../utils/cart-utils";
 
-export class MiniCartDisplay extends Component {
+export class MiniCartDisplay extends PureComponent {
   componentDidMount() {
     document.addEventListener("mousedown", this.closeOnClickOutside);
   }

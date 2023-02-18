@@ -2,9 +2,9 @@ import { extractPrice } from "./product-utils";
 
 //extract the selected item from the arrtibutes array
 const extractSelectedAttributes = (attributes) =>
-  attributes?.filter((attribute) =>
-    attribute.items.find((item) => item.selected === true)
-  );
+  attributes
+    ?.map((attribute) => attribute.items.find((item) => item.selected))
+    .filter(Boolean);
 
 //find if product exist by comparing the id and selected attributes of product to add vs each cart item
 const findExistingProduct = (cartItems, id, attributes) =>
@@ -24,6 +24,7 @@ export const addToCart = (cartItems, productToAdd, productAttributes) => {
     productToAdd.id,
     productAttributes
   );
+
   // check if all attributes are selected
   if (selectedAttributesCount < productAttributes.length) {
     alert("please select all attributes in order to add to cart");

@@ -8,8 +8,7 @@ import Spinner from "../../components/spinner/spinner-comp";
 
 export class CategoryContainer extends PureComponent {
   render() {
-    const { category } = this.props.match.params;
-
+    const { category } = this.props;
     return (
       <Query query={GET_PRODUCTS_BY_CATEGORY} variables={{ title: category }}>
         {({ data, loading }) =>

@@ -22,7 +22,7 @@ export class App extends Component {
             <Route
               exact
               path="/:category"
-              render={(props) => <Category {...props} />}
+              render={({match}) => <Category category={match.params.category} />}
             />
             <Route
               exact

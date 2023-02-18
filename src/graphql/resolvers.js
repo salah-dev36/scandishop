@@ -5,7 +5,7 @@ import {
   GET_CART_ITEMS,
 } from "./queries";
 
-import { addItemToCart, removeItemFromCart } from "../utils/cart-utils";
+import { addToCart, removeFromCart } from "../utils/cart-utils";
 
 export const resolvers = {
   Mutation: {
@@ -66,7 +66,7 @@ export const resolvers = {
         query: GET_CART_ITEMS,
       });
 
-      const newCartItems = addItemToCart(
+      const newCartItems = addToCart(
         cartItems,
         productToAdd,
         selectedAttributes
@@ -85,7 +85,7 @@ export const resolvers = {
         query: GET_CART_ITEMS,
       });
 
-      const newCartItems = removeItemFromCart(cartItems, productToRemove);
+      const newCartItems = removeFromCart(cartItems, productToRemove);
 
       cache.writeQuery({
         query: GET_CART_ITEMS,
